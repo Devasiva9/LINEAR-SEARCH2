@@ -1,26 +1,39 @@
-Bubble sort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order. The pass through the list is repeated until the list is sorted.
+Linear search, also known as sequential search, is a simple method for finding a target element within a list. It works by iterating through each element in the list until the target element is found or the end of the list is reached. Here's a description of the linear search algorithm:
 
-Here's a simple implementation of the bubble sort algorithm in Python:
+1. **Start at the Beginning:**
+   The search begins from the first element in the list.
+
+2. **Comparison:**
+   Compare the target element with the current element being examined.
+
+3. **Search Iteration:**
+   Repeat the comparison for each element in the list, moving sequentially from one element to the next.
+
+4. **Element Found:**
+   If the target element is found during this process, the search stops, and the index or position of the element is returned.
+
+5. **Element Not Found:**
+   If the end of the list is reached without finding the target element, the search concludes, and a special value (such as -1) is often returned to indicate that the element is not present in the list.
+
+Here's a simple implementation of linear search in Python:
 
 ```python
-def bubble_sort(arr):
-    n = len(arr)
-
-    # Traverse through all array elements
-    for i in range(n):
-        # Last i elements are already in place, so we don't need to check them
-        for j in range(0, n-i-1):
-            # Swap if the element found is greater than the next element
-            if arr[j] > arr[j+1]:
-                arr[j], arr[j+1] = arr[j+1], arr[j]
+def linear_search(arr, target):
+    for i in range(len(arr)):
+        if arr[i] == target:
+            return i  # Element found, return its index
+    return -1  # Element not found
 
 # Example usage:
-my_list = [64, 34, 25, 12, 22, 11, 90]
-bubble_sort(my_list)
+my_list = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5]
+target_element = 6
 
-print("Sorted array:", my_list)
+result = linear_search(my_list, target_element)
+
+if result != -1:
+    print(f"Element {target_element} found at index {result}.")
+else:
+    print(f"Element {target_element} not found in the list.")
 ```
 
-In this implementation, the `bubble_sort` function takes an array as input and sorts it in ascending order using the bubble sort algorithm. The outer loop (`for i in range(n)`) represents each pass through the array, and the inner loop (`for j in range(0, n-i-1)`) compares adjacent elements and swaps them if they are in the wrong order.
-
-Note: Bubble sort is not the most efficient sorting algorithm, especially for large datasets, but it is easy to understand and implement. There are more efficient sorting algorithms like merge sort or quicksort for larger datasets.
+It's important to note that linear search has a time complexity of O(n), where n is the number of elements in the list. This means the time taken for the search is directly proportional to the size of the list. For larger datasets, more efficient search algorithms like binary search may be preferred.
